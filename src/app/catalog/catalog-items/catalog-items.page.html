@@ -14,7 +14,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let item of items" [routerLink]="['/catalog/', item.id]" >
+    <ion-item *ngFor="let item of items">
       <app-catalog-item [item]="item"></app-catalog-item>
     </ion-item>
   </ion-list>
