@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{this.Title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="catalog"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input formControlName="Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-input formControlName="Description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Price</ion-label>
+      <ion-input formControlName="Price"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Type</ion-label>
+      <ion-select formControlName="CatalogTypeId" interface="action-sheet" placeholder="Select One">
+        <ion-select-option *ngFor="let catalogtype of types" [value]="catalogtype.id">{{catalogtype.type}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Brand</ion-label>
+      <ion-select formControlName="CatalogBrandId" interface="action-sheet" placeholder="Select One">
+          <ion-select-option *ngFor="let catalogbrand of brands" [value]="catalogbrand.id">{{catalogbrand.brand}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-button color="primary" expand="full" type="submit" [disabled]="!form.valid">Save</ion-button>
+  </form>
+</ion-content>
