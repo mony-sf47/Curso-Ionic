@@ -1,22 +1,16 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-
-import { CatalogItemsPage } from "./catalog-items/catalog-items.page";
-import { CatalogDetailPage } from "./catalog-detail/catalog-detail.page";
-import { CatalogItemsResolver } from "./catalog.resolver";
+import { CatalogDetailPage } from './catalog-detail/catalog-detail.page';
+import { CatalogItemsPage } from './catalog-items/catalog-items.page';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: "catalog",
-    component: CatalogItemsPage
-    //runGuardsAndResolvers: "always",
-    //resolve: { data: CatalogItemsResolver }
-  },
-  { path: "catalog/:id", component: CatalogDetailPage }
+  { path: "catalog", component: CatalogItemsPage, canActivate: [AuthGuard] },
+  { path: "catalog/:id", component: CatalogDetailPage, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CatalogRoutingModule {}
+export class CatalogRoutingModule { }

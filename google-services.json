@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "549204747823",
+    "firebase_url": "https://curso-ionic-cb6b0.firebaseio.com",
+    "project_id": "curso-ionic-cb6b0",
+    "storage_bucket": "curso-ionic-cb6b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549204747823:android:569961266ad6f047",
+        "android_client_info": {
+          "package_name": "cdis.uanl.cursoionic.capacitacion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549204747823-cd8uicrri246l4a7q8u01mgig4klrd5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzzo23E4XWw9QWYX0Cinn_-MOcoF0sf_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549204747823-cd8uicrri246l4a7q8u01mgig4klrd5m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

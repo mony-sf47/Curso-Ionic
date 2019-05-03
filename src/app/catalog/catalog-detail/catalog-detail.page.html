@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>{{this.Title}}</ion-title>
+    <ion-title>{{this.title}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="catalog"></ion-back-button>
     </ion-buttons>
@@ -23,16 +23,55 @@
     </ion-item>
     <ion-item>
       <ion-label>Type</ion-label>
-      <ion-select formControlName="CatalogTypeId" interface="action-sheet" placeholder="Select One">
-        <ion-select-option *ngFor="let catalogtype of types" [value]="catalogtype.id">{{catalogtype.type}}</ion-select-option>
+      <ion-select
+        formControlName="CatalogTypeId"
+        interface="action-sheet"
+        placeholder="Select One">
+        <ion-select-option
+          *ngFor="let catalogtype of types"
+          [value]="catalogtype.id">
+          {{catalogtype.type}}
+        </ion-select-option>        
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Brand</ion-label>
-      <ion-select formControlName="CatalogBrandId" interface="action-sheet" placeholder="Select One">
-          <ion-select-option *ngFor="let catalogbrand of brands" [value]="catalogbrand.id">{{catalogbrand.brand}}</ion-select-option>
-        </ion-select>
+      <ion-select
+        formControlName="CatalogBrandId"
+        interface="action-sheet"
+        placeholder="Select One">
+        <ion-select-option
+          *ngFor="let brandtype of brands"
+          [value]="brandtype.id">
+          {{brandtype.brand}}
+        </ion-select-option>
+      </ion-select>
     </ion-item>
-    <ion-button color="primary" expand="full" type="submit" [disabled]="!form.valid">Save</ion-button>
+    <ion-button 
+      color="primary"
+      expand="full"
+      (click)="selectImage()">
+      <ion-icon slot="start" name="camera"></ion-icon>
+      Select Image
+    </ion-button>
+    <ion-item *ngIf="img.path != ''">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="img.path"></ion-img>
+      </ion-thumbnail>
+      <ion-label>{{img.name}}</ion-label>
+      <ion-button
+        slot="end"
+        fill="clear"
+        (click)="deleteImage(img)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-button
+      color="primary"
+      expand="full"
+      type="submit"
+      [disabled]="!form.valid">
+      Save
+    </ion-button>
   </form>
 </ion-content>

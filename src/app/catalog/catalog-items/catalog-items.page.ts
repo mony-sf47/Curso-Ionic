@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { CatalogItem } from "../types";
-import { CatalogService } from "../catalog.service";
-import { LoadingController } from "@ionic/angular";
+import { LoadingController } from '@ionic/angular';
+import { CatalogService } from '../catalog.service';
+import { CatalogItem } from '../type';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-catalog-items",
-  templateUrl: "./catalog-items.page.html",
-  styleUrls: ["./catalog-items.page.scss"]
+  selector: 'app-catalog-items',
+  templateUrl: './catalog-items.page.html',
+  styleUrls: ['./catalog-items.page.scss'],
 })
 export class CatalogItemsPage implements OnInit {
   items: CatalogItem[] = [];
@@ -14,17 +14,26 @@ export class CatalogItemsPage implements OnInit {
   constructor(
     private catalogService: CatalogService,
     private loadingController: LoadingController
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCatalogItems();
+  }
 
   ionViewWillEnter() {
     this.getData();
   }
 
+  getCatalogItems() {
+    this.catalogService.getCatalogItems().subscribe(
+      data => (this.items = data.data),
+      err => console.log(err)
+    );
+  }
+
   async getData() {
     const loading = await this.loadingController.create({
-      message: "Loading"
+      message: 'Loading'
     });
     await loading.present();
     this.catalogService.getCatalogItems().subscribe(
@@ -39,4 +48,5 @@ export class CatalogItemsPage implements OnInit {
       }
     );
   }
+
 }
